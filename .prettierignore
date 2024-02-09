@@ -2,3 +2,8 @@
 build
 coverage
 .next
+node_modules
+dist
+public
+package.json
+package-lock.json
