@@ -1,8 +1,8 @@
 import "@/styles/globals.css";
-import Navigation from "@/pages/components/Navigation";
+import Navigation from "@/components/Navigation";
 import type { AppProps } from "next/app";
 import { Lato } from "next/font/google";
-import Footer from "@/pages/components/Footer";
+import Footer from "@/components/Footer";
 import { SessionProvider } from "next-auth/react";
 
 const lato = Lato({
