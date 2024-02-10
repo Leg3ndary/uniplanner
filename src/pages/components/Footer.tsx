@@ -1,7 +1,7 @@
 export default function Footer() {
     return (
-        <footer className="flex justify-center items-center p-2 h-96 bg-slate-800 w-full">
-            <p className="font-black text-white text-2xl p-4">UniPlanner</p>
+        <footer className="flex items-center justify-center w-full p-2 bg-[#0F0F0F] h-96">
+            <p className="p-4 text-2xl font-black text-white">UniPlanner</p>
         </footer>
     );
 }

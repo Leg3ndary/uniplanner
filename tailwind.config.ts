@@ -15,7 +15,7 @@ const config: Config = {
             },
             height: {
                 128: "32rem",
-            }
+            },
         },
     },
     plugins: [],
