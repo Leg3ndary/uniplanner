@@ -16,14 +16,14 @@ export default function Navigation() {
                     {session ? (
                         <button
                             onClick={() => signOut()}
-                            className="bg-white text-black p-2 rounded-md"
+                            className="bg-transparent border-solid border-white text-white border-2 py-2 px-4 rounded-md"
                         >
                             Sign Out
                         </button>
                     ) : (
                         <button
                             onClick={() => signIn("google")}
-                            className="bg-white text-black p-2 rounded-md"
+                            className="bg-transparent border-solid border-white text-white border-2 py-2 px-4 rounded-md"
                         >
                             Sign In
                         </button>
