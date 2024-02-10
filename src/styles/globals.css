@@ -3,17 +3,22 @@
 @tailwind utilities;
 
 :root {
-    --background-color: #1f1f1f;
+    --background-color: #fafafa;
 }
 
 body {
-    color: white;
+    color: black;
     background: var(--background-color);
 }
 
 h1 {
     font-size: 4rem;
     font-weight: 900;
+}
+
+h2 {
+    font-size: 3rem;
+    font-weight: 800;
 }
 
 @layer utilities {
