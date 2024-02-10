@@ -11,10 +11,10 @@ export default function Home() {
                     navigate their university applications.
                 </h4>
             </div>
-            <div className="flex flex-col items-center justify-center w-full max-w-[1400px] p-4">
-                <div className="flex items-center justify-center w-11/12 p-4 border-2">
+            <section className="flex flex-col items-center justify-center w-full max-w-[1400px] p-4">
+                <div className="flex items-center justify-center w-3/4 p-4 m-8 border-2">
                     <div className="flex flex-col justify-center flex-1 px-4 py-2 bg-white shadow-2xl rounded-xl">
-                        <h2>Organize your Grades</h2>
+                        <h2 className="text-center">View Applications</h2>
                         <p>
                             View different predicted outcomes based on your
                             grades!
@@ -28,7 +28,39 @@ export default function Home() {
                         />
                     </div>
                 </div>
-            </div>
+                <div className="flex items-center justify-center w-3/4 p-4 m-8 border-2">
+                    <div className="flex items-center justify-center w-1/2">
+                        <img
+                            src="http://placekitten.com/g/400/300"
+                            alt="Hero"
+                            className="shadow-2xl rounded-xl"
+                        />
+                    </div>
+                    <div className="flex flex-col justify-center flex-1 px-4 py-2 bg-white shadow-2xl rounded-xl">
+                        <h2 className="text-center">Academic Roadmap</h2>
+                        <p>
+                            View different predicted outcomes based on your
+                            grades!
+                        </p>
+                    </div>
+                </div>
+                <div className="flex items-center justify-center w-3/4 p-4 m-8 border-2">
+                    <div className="flex flex-col justify-center flex-1 px-4 py-2 bg-white shadow-2xl rounded-xl">
+                        <h2 className="text-center">Organize your Grades</h2>
+                        <p>
+                            View different predicted outcomes based on your
+                            grades!
+                        </p>
+                    </div>
+                    <div className="flex items-center justify-center w-1/2">
+                        <img
+                            src="http://placekitten.com/g/400/300"
+                            alt="Hero"
+                            className="shadow-2xl rounded-xl"
+                        />
+                    </div>
+                </div>
+            </section>
         </main>
     );
 }
