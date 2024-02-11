@@ -1,4 +1,5 @@
 import DefaultLayout from "@/layouts/default";
+import Link from "next/link";
 
 export default function Pricing() {
     return (
@@ -13,18 +14,24 @@ export default function Pricing() {
                     host servers, and therefore you can get access to beta
                     features by supporting the project.
                 </p>
-                <div className="grid justify-center items-center grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-                    <div className="flex flex-col items-center justify-center p-4 m-4 border-2">
+                <div className="grid justify-center grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 items-stretch">
+                    <div className="flex flex-col items-center justify-center p-4 m-4 bg-white shadow-lg rounded-xl">
                         <h2 className="text-center">Free</h2>
-                        <p>Access to all core features</p>
+                        <p>Access to all features</p>
+                        <Link
+                            href="/"
+                            className="rounded-3xl border-2 py-2 px-10"
+                        >
+                            Get Started
+                        </Link>
                     </div>
-                    <div className="flex flex-col items-center justify-center p-4 m-4 border-2">
+                    <div className="flex flex-col items-center justify-center p-4 m-4 bg-white shadow-lg rounded-xl">
                         <h2 className="text-center">Beta</h2>
                         <p>Access to all core features</p>
                         <p>Access to beta features</p>
                         <p>Support the project</p>
                     </div>
-                    <div className="flex flex-col items-center justify-center p-4 m-4 border-2">
+                    <div className="flex flex-col items-center justify-center p-4 m-4 bg-white shadow-lg rounded-xl">
                         <h2 className="text-center">Beta</h2>
                         <p>Access to all core features</p>
                         <p>Access to beta features</p>
