@@ -32,7 +32,7 @@ export default function PriceBox(box: PriceBoxProps) {
     return (
         <div className={`p-1 m-4 rounded-2xl shadow-2xl ${border}`}>
             <div
-                className={`flex flex-col items-center justify-center p-4 rounded-xl ${background}`}
+                className={`flex flex-col items-center justify-center p-4 rounded-xl h-full ${background}`}
             >
                 <h4 className={`text-center text-2xl mt-4 ${text}`}>
                     {box.type}
@@ -44,6 +44,9 @@ export default function PriceBox(box: PriceBoxProps) {
                         {box.price}
                     </h2>
                 </div>
+                <p className={`text-xl mx-6 mb-4 text-center ${text}`}>
+                    {box.text}
+                </p>
                 <div className="w-full mb-8 px-4">
                     {box.features.map((feature, index) => (
                         <div
@@ -59,7 +62,7 @@ export default function PriceBox(box: PriceBoxProps) {
                 </div>
                 <Link
                     href={box.button.href}
-                    className={`rounded-3xl py-3 w-11/12 text-center font-bold text-2xl mb-4 ${button}`}
+                    className={`rounded-2xl py-3 w-11/12 text-center font-bold text-2xl mb-4 mt-auto ${button}`}
                 >
                     {box.button.text}
                 </Link>

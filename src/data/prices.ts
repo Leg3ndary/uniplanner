@@ -4,7 +4,7 @@ const pricesInfo: PriceBoxProps[] = [
     {
         type: PriceType.Basic,
         price: "Free",
-
+        text: "Access to all features, but with limited usage.",
         features: [
             "Access to all features",
             "Manage 5 Applications",
@@ -19,6 +19,7 @@ const pricesInfo: PriceBoxProps[] = [
     {
         type: PriceType.Premium,
         price: "$5.99",
+        text: "Full customization and unlimited access to all features.",
         features: [
             "Access to all features",
             "Unlimited Applications",
@@ -26,13 +27,14 @@ const pricesInfo: PriceBoxProps[] = [
             "Full Customization",
         ],
         button: {
-            text: "Get Started",
+            text: "Upgrade Now",
             href: "/",
         },
     },
     {
         type: PriceType.Enterprise,
         price: "Contact Us",
+        text: "Need more? Contact us for a custom plan.",
         features: [
             "Access to all features",
             "Unlimited Applications",
@@ -40,7 +42,7 @@ const pricesInfo: PriceBoxProps[] = [
             "Full Customization",
         ],
         button: {
-            text: "Get Started",
+            text: "Contact Us",
             href: "/",
         },
     },

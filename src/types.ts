@@ -7,6 +7,7 @@ export enum PriceType {
 export type PriceBoxProps = {
     type: PriceType;
     price: string;
+    text: string;
     features: string[];
     button: {
         text: string;
