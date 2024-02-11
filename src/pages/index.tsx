@@ -1,4 +1,5 @@
 import Image from "next/image";
+import DefaultLayout from "@/layouts/default";
 
 export default function Home() {
     return (
@@ -64,3 +65,7 @@ export default function Home() {
         </main>
     );
 }
+
+Home.getLayout = function getLayout(page: JSX.Element) {
+    return <DefaultLayout>{page}</DefaultLayout>;
+};
