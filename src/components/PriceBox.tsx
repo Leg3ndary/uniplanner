@@ -62,7 +62,7 @@ export default function PriceBox(box: PriceBoxProps) {
                 </div>
                 <Link
                     href={box.button.href}
-                    className={`rounded-2xl py-3 w-11/12 text-center font-bold text-2xl mb-4 mt-auto ${button}`}
+                    className={`rounded-2xl shadow-xl py-3 w-11/12 text-center font-bold text-2xl mb-4 mt-auto ${button}`}
                 >
                     {box.button.text}
                 </Link>

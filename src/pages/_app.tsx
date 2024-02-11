@@ -22,15 +22,11 @@ export default function App({
 }: ModifiedAppProps) {
     const getLayout = Component.getLayout ?? ((page) => page);
 
-    const Layout = getLayout(
-        <div className={lato.className}>
-            <Component {...pageProps} />
-        </div>
-    );
+    const Layout = getLayout(<Component {...pageProps} />);
 
     return (
-        <SessionProvider session={session}>
-            {Layout}
-        </SessionProvider>
+        <div className={`${lato.className}`}>
+            <SessionProvider session={session}>{Layout}</SessionProvider>
+        </div>
     );
 }

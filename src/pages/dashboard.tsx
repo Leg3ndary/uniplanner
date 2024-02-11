@@ -1,13 +1,26 @@
+import WorkingLayout from "@/layouts/dashboardLayout";
+import DashboardNavigation from "@/components/Navigation/DashboardNavigation";
+
 export default function Dashboard() {
     return (
-        <main className="flex flex-col items-center min-h-screen">
-            <div className="flex items-center justify-center w-full bg-cover bg-center h-128 bg-[url(/../hero.jpg)]">
-                <h1 className="text-white">Dashboard</h1>
+        <main className="flex w-full min-h-screen">
+            <div className="relative w-[275px]">
+                <DashboardNavigation />
             </div>
-            <div className="flex flex-col justify-center p-4 bg-white shadow-2xl rounded-xl">
-                <h2>Organize your Grades</h2>
-                <p>View different predicted outcomes based on your grades!</p>
+            <div className="bg-blue-500 flex-1">
+                <h1 className="text-white">Dashboard</h1>
+                <p className="text-white">
+                    Welcome to the dashboard, here you can view your
+                    applications and more!sssss
+                </p>
+                <p className="my-96">po</p>
+                <p className="my-96">po</p>
+                <p className="my-96">po</p>
             </div>
         </main>
     );
 }
+
+Dashboard.getLayout = function getLayout(page: JSX.Element) {
+    return <WorkingLayout>{page}</WorkingLayout>;
+};

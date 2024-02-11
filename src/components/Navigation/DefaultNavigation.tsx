@@ -5,7 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { RxDashboard } from "react-icons/rx";
 import { FaSignOutAlt, FaHome } from "react-icons/fa";
 
-export default function Navigation() {
+export default function DefaultNavigation() {
     const { data: session } = useSession();
     const navRef = useRef<HTMLDivElement>(null);
     const mobileRef = useRef<HTMLDivElement>(null);
@@ -69,7 +69,7 @@ export default function Navigation() {
                             </div>
                         ) : (
                             <button
-                                onClick={() => signIn("google")}
+                                onClick={() => signIn("google", { callbackUrl: "/dashboard" })}
                                 className="px-5 py-1 text-lg font-bold text-white transition-all duration-300 ease-in-out bg-transparent border-2 border-white border-solid rounded-md shadow-2xl cursor-pointer hover:border-cyan-400 hover:text-cyan-400"
                             >
                                 Sign In
@@ -175,7 +175,7 @@ export default function Navigation() {
                                 ) : (
                                     <button
                                         onClick={() => {
-                                            signIn("google");
+                                            signIn("google", { callbackUrl: "/dashboard" });
                                             setMobileMenuOpen(false);
                                         }}
                                         className="text-lg font-bold text-black transition-all duration-300 ease-in-out hover:text-cyan-400"
