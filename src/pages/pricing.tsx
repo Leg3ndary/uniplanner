@@ -8,7 +8,7 @@ export default function Pricing() {
             <div className="max-w-[1400px] w-full p-4">
                 <h1 className="text-black text-center m-4">Premium Features</h1>
                 <hr className="my-6" />
-                <p className="font-medium text-xl text-center mb-4 mx-4 text-slate-800">
+                <p className="font-medium text-xl text-center my-8 mx-4 text-slate-800">
                     Get access to more features by supporting the project,
                     thanks for your support!
                 </p>
