@@ -4,10 +4,10 @@ import DefaultLayout from "@/layouts/default";
 export default function Home() {
     return (
         <main className="flex flex-col items-center min-h-screen">
-            <div className="relative flex flex-col items-center justify-center w-full bg-center bg-cover h-128 bg-[url('/../hero.jpg')]">
+            <div className="relative flex flex-col items-center justify-center w-full bg-center bg-cover h-128 bg-[url('/../hero.jpg')] p-4">
                 <div className="absolute inset-0 bg-black opacity-50"></div>
                 <h1 className="z-10 text-white">UniPlanner</h1>
-                <h4 className="z-10 text-white">
+                <h4 className="z-10 text-white text-center">
                     Empowering students to effectively plan, organize, and
                     navigate their university applications.
                 </h4>

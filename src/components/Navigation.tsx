@@ -2,14 +2,24 @@ import Link from "next/link";
 import { useSession, signIn, signOut } from "next-auth/react";
 import { useState, useEffect, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { RxDashboard } from "react-icons/rx";
+import { FaSignOutAlt, FaHome } from "react-icons/fa";
 
 export default function Navigation() {
     const { data: session } = useSession();
     const navRef = useRef<HTMLDivElement>(null);
+    const mobileRef = useRef<HTMLDivElement>(null);
 
     function handleClickOutside(event: MouseEvent) {
         if (navRef.current && !navRef.current.contains(event.target as Node)) {
             setAccountPopup(false);
+        }
+
+        if (
+            mobileRef.current &&
+            !mobileRef.current.contains(event.target as Node)
+        ) {
+            setMobileMenuOpen(false);
         }
     }
 
@@ -79,8 +89,12 @@ export default function Navigation() {
                                         className="text-lg font-bold text-black transition-all duration-300 ease-in-out hover:text-cyan-400"
                                         onClick={() => setAccountPopup(false)}
                                     >
-                                        Dashboard
+                                        <div className="flex items-center gap-2">
+                                            <RxDashboard />
+                                            Dashboard
+                                        </div>
                                     </Link>
+
                                     <button
                                         onClick={() => {
                                             signOut({ callbackUrl: "/" });
@@ -88,7 +102,10 @@ export default function Navigation() {
                                         }}
                                         className="text-lg font-bold text-black transition-all duration-300 ease-in-out hover:text-red-400"
                                     >
-                                        Log Out
+                                        <div className="flex items-center gap-2">
+                                            <FaSignOutAlt />
+                                            Sign Out
+                                        </div>
                                     </button>
                                 </motion.div>
                             )}
@@ -114,26 +131,33 @@ export default function Navigation() {
                     <AnimatePresence>
                         {mobileMenuOpen && (
                             <motion.div
-                                className="absolute top-20 right-4 z-10 flex flex-col p-4 w-32 bg-white rounded-md shadow-2xl"
+                                className="absolute top-20 right-4 z-10 flex flex-col p-4 bg-white rounded-md shadow-2xl"
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 exit={{ opacity: 0, y: 20 }}
+                                ref={mobileRef}
                             >
                                 <Link
                                     href="/"
                                     className="text-lg font-bold text-black transition-all duration-300 ease-in-out hover:text-cyan-400"
+                                    onClick={() => setMobileMenuOpen(false)}
                                 >
-                                    Home
+                                    <div className="flex items-center gap-2">
+                                        <FaHome />
+                                        Home
+                                    </div>
                                 </Link>
                                 <Link
                                     href="/pricing"
                                     className="text-lg font-bold text-black transition-all duration-300 ease-in-out hover:text-cyan-400"
+                                    onClick={() => setMobileMenuOpen(false)}
                                 >
                                     Pricing
                                 </Link>
                                 <Link
                                     href="/about"
                                     className="text-lg font-bold text-black transition-all duration-300 ease-in-out hover:text-cyan-400"
+                                    onClick={() => setMobileMenuOpen(false)}
                                 >
                                     About
                                 </Link>
@@ -141,12 +165,19 @@ export default function Navigation() {
                                     <Link
                                         href="/dashboard"
                                         className="text-lg font-bold text-black transition-all duration-300 ease-in-out hover:text-cyan-400"
+                                        onClick={() => setMobileMenuOpen(false)}
                                     >
-                                        Dashboard
+                                        <div className="flex items-center gap-2">
+                                            <RxDashboard />
+                                            Dashboard
+                                        </div>
                                     </Link>
                                 ) : (
                                     <button
-                                        onClick={() => signIn("google")}
+                                        onClick={() => {
+                                            signIn("google");
+                                            setMobileMenuOpen(false);
+                                        }}
                                         className="text-lg font-bold text-black transition-all duration-300 ease-in-out hover:text-cyan-400"
                                     >
                                         Sign In
@@ -160,7 +191,10 @@ export default function Navigation() {
                                         }}
                                         className="text-lg font-bold text-black transition-all duration-300 ease-in-out hover:text-red-400"
                                     >
-                                        Log Out
+                                        <div className="flex items-center gap-2">
+                                            <FaSignOutAlt />
+                                            Sign Out
+                                        </div>
                                     </button>
                                 )}
                             </motion.div>
