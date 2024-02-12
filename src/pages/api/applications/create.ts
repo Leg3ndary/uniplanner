@@ -1,6 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
+import { client } from "@/util/functions/connectToMongo";
 
 type Data = {
     success: boolean;
@@ -19,8 +20,6 @@ export default async function handler(
     if (!session) {
         return res.status(401).json({ success: false });
     }
-
-    // Create application
 
     res.status(200).json({ success: true });
 }
