@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
-import { client } from "@/util/functions/connectToMongo";
+import prisma from "@/lib/prisma";
 
 type Data = {
     success: boolean;
