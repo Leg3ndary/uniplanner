@@ -1,6 +1,8 @@
 import DashLayout from "@/layouts/dashLayout";
 import DashboardNavigation from "@/components/Navigation/DashboardNavigation";
 import { FaPlus } from "react-icons/fa";
+import Image from "next/image";
+import Waterloo from "@/../public/waterloo.png";
 
 export default function Applications() {
     return (
@@ -18,12 +20,26 @@ export default function Applications() {
                 </div>
             </div>
             <div className="w-full flex">
-                <div className="relative w-64 mx-8" />
-                <div className="w-full m-4 p-4 grid grid-flow-row grid-cols-3">
-                    {/* Add new application */}
-                    <div className="flex items-center justify-center mb-4 border-4 h-64 border-gray-300 border-dashed rounded-xl">
-                        <FaPlus className="text-gray-300 text-4xl" />
-                        <h4 className="text-gray-300 mx-4">Add New</h4>
+                <div className="relative w-64" />
+                <div className="flex-1 p-8 ml-4 grid grid-flow-row grid-cols-3 items-center justify-center gap-12">
+                    <div className="flex justify-center mb-4 h-80 rounded-xl bg-white shadow-xl transition-all duration-800 ease-in-out cursor-pointer">
+                        <div className="flex items-center h-12 m-4">
+                            <Image
+                                src={Waterloo}
+                                alt="Waterloo"
+                                className="rounded-xl h-12 w-12"
+                            />
+
+                            <h4 className="text-black mx-4 text-2xl">
+                                University of Waterloo
+                            </h4>
+                        </div>
+                    </div>
+                    <div className="group flex items-center justify-center mb-4 border-4 h-80 border-gray-300 border-dashed bg-white rounded-xl hover:bg-gray-300 transition-all duration-800 ease-in-out cursor-pointer">
+                        <FaPlus className="text-gray-300 group-hover:text-white duration-800 transition-all text-4xl" />
+                        <h4 className="text-gray-300 group-hover:text-white duration-800 transition-all mx-4">
+                            Add New
+                        </h4>
                     </div>
                 </div>
             </div>

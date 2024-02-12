@@ -10,7 +10,7 @@ export default function DashboardNavigation({ active }: { active: string }) {
     const userImage = session?.user?.picture ?? "";
 
     return (
-        <nav className="flex items-center flex-col h-[calc(100svh-2rem)] w-64 m-4 bg-white drop-shadow-lg rounded-xl top-0 fixed">
+        <nav className="flex items-center flex-col h-[calc(100svh-2rem)] w-64 m-4 bg-white drop-shadow-lg rounded-xl top-0 fixed z-10">
             <Link
                 href="/"
                 className="text-center font-black text-3xl my-2 mt-4"
