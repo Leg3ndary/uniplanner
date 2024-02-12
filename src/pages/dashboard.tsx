@@ -1,13 +1,13 @@
-import WorkingLayout from "@/layouts/dashboardLayout";
+import DashLayout from "@/layouts/dashLayout";
 import DashboardNavigation from "@/components/Navigation/DashboardNavigation";
 
 export default function Dashboard() {
     return (
-        <main className="flex w-full min-h-screen">
-            <div className="relative w-[275px]">
-                <DashboardNavigation />
+        <main className="flex w-full h-48 bg-blue-500">
+            <div className="relative w-64 mr-8">
+                <DashboardNavigation active="dashboard" />
             </div>
-            <div className="bg-blue-500 flex-1">
+            <div className="flex-1">
                 <h1 className="text-white">Dashboard</h1>
                 <p className="text-white">
                     Welcome to the dashboard, here you can view your
@@ -22,5 +22,5 @@ export default function Dashboard() {
 }
 
 Dashboard.getLayout = function getLayout(page: JSX.Element) {
-    return <WorkingLayout>{page}</WorkingLayout>;
+    return <DashLayout>{page}</DashLayout>;
 };
