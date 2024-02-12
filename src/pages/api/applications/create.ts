@@ -1,16 +1,23 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from "next";
+import { getServerSession } from "next-auth/next";
+import { authOptions } from "@/pages/api/auth/[...nextauth]";
 
 type Data = {
     success: boolean;
 };
 
-export default function handler(
+export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse<Data>,
 ) {
     if (req.method !== "POST") {
         return res.status(405).json({ success: false });
+    }
+
+    const session = await getServerSession(req, res, authOptions);
+
+    if (!session) {
+        return res.status(401).json({ success: false });
     }
 
     // Create application
