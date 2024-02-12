@@ -8,34 +8,55 @@ generator client {
 }
 
 model Application {
-  id       String    @id @default(auto()) @map("_id") @db.ObjectId
-  slug     String    @unique
-  title    String
-  body     String
-  author   User      @relation(fields: [authorId], references: [id])
-  authorId String    @db.ObjectId
-  comments Comment[]
+  id               String            @id @default(auto()) @map("_id") @db.ObjectId
+  slug             String            @unique
+  title            String
+  questions        Question[]
+  extracurriculars Extracurricular[]
+  awards           Award[]
+  deadline         DateTime
+  user             User              @relation(fields: [userId], references: [id])
+  userId           String            @db.ObjectId
 }
 
 model User {
   id           String        @id @default(auto()) @map("_id") @db.ObjectId
   email        String        @unique
-  name         String?
-  address      Address?
+  name         String
   applications Application[]
+  grades       Grade[]
 }
 
-model Comment {
-  id      String @id @default(auto()) @map("_id") @db.ObjectId
-  comment String
-  post    Post   @relation(fields: [postId], references: [id])
-  postId  String @db.ObjectId
+type Question {
+  question  String
+  answer    String
+  limitType String?
+  limit     Int?
+  completed Boolean
 }
 
-// Address is an embedded document
-type Address {
-  street String
-  city   String
-  state  String
-  zip    String
+type Grade {
+  course String
+  level  String
+  code   String
+  mark   Int?
+  grade  Int
+}
+
+type Extracurricular {
+  title       String
+  startDate   DateTime
+  endDate     DateTime?
+  description String
+  type        String
+  reference   String
+}
+
+type Award {
+  title       String
+  date        DateTime
+  description String
+  reference   String
+  ranking     Int?
+  score       Int?
 }
