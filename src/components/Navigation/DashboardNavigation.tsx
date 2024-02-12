@@ -32,7 +32,6 @@ export default function DashboardNavigation({ active }: { active: string }) {
                             : ""
                     }`}
                 >
-                    {/* https://stackoverflow.com/questions/69602694/how-to-update-the-type-of-session-in-session-callback-in-next-auth-when-using-ty */}
                     <FaClipboardList className="text-xl mr-4 text-purple-500" />
                     <Link href="/dashboard/applications">Applications</Link>
                 </li>

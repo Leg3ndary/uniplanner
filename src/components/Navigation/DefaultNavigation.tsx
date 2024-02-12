@@ -69,7 +69,11 @@ export default function DefaultNavigation() {
                             </div>
                         ) : (
                             <button
-                                onClick={() => signIn("google", { callbackUrl: "/dashboard" })}
+                                onClick={() =>
+                                    signIn("google", {
+                                        callbackUrl: "/dashboard",
+                                    })
+                                }
                                 className="px-5 py-1 text-lg font-bold text-white transition-all duration-300 ease-in-out bg-transparent border-2 border-white border-solid rounded-md shadow-2xl cursor-pointer hover:border-cyan-400 hover:text-cyan-400"
                             >
                                 Sign In
@@ -175,7 +179,9 @@ export default function DefaultNavigation() {
                                 ) : (
                                     <button
                                         onClick={() => {
-                                            signIn("google", { callbackUrl: "/dashboard" });
+                                            signIn("google", {
+                                                callbackUrl: "/dashboard",
+                                            });
                                             setMobileMenuOpen(false);
                                         }}
                                         className="text-lg font-bold text-black transition-all duration-300 ease-in-out hover:text-cyan-400"
