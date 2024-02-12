@@ -1,8 +1,8 @@
 import Link from "next/link";
-import { useSession, signIn, signOut } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import Image from "next/image";
 import { RxDashboard } from "react-icons/rx";
-import { FaSignOutAlt, FaHome, FaClipboardList } from "react-icons/fa";
+import { FaClipboardList } from "react-icons/fa";
 
 export default function DashboardNavigation({ active }: { active: string }) {
     const { data: session } = useSession();
@@ -14,37 +14,38 @@ export default function DashboardNavigation({ active }: { active: string }) {
                 UniPlanner
             </h3>
             <div className="h-[1px] w-10/12 bg-slate-200 rounded-full my-2" />
-            <ul className="flex flex-col w-full px-4">
-                <li
-                    className={`flex items-center p-2 my-2 rounded-xl px-4 ${
+            <div className="flex flex-col w-full px-4">
+                <Link
+                    href="/dashboard"
+                    className={`flex items-center p-2 my-2 rounded-xl px-4 transition-all duration-400 ease-in-out ${
                         active === "dashboard"
-                            ? "font-semibold bg-cyan-50/95"
-                            : ""
+                            ? "font-semibold bg-cyan-50/95 hover:bg-cyan-100/95"
+                            : "hover:bg-cyan-50/95"
                     }`}
                 >
                     <RxDashboard className="text-xl mr-4 text-cyan-500" />
-                    <Link href="/dashboard">Dashboard</Link>
-                </li>
-                <li
-                    className={`flex items-center p-2 rounded-xl px-4 ${
+                    Dashboard
+                </Link>
+                <Link
+                    href="/applications"
+                    className={`flex items-center p-2 rounded-xl px-4 transition-all duration-400 ease-in-out ${
                         active === "applications"
-                            ? "font-semibold bg-purple-100/95"
-                            : ""
+                            ? "font-semibold bg-purple-100/95 hover:bg-purple-200/95"
+                            : "hover:bg-purple-100/95"
                     }`}
                 >
                     <FaClipboardList className="text-xl mr-4 text-purple-500" />
-                    <Link href="/dashboard/applications">Applications</Link>
-                </li>
-            </ul>
+                    Applications
+                </Link>
+            </div>
             <div className="h-[1px] w-10/12 bg-slate-200 rounded-full mt-auto mb-4" />
-            {/* Google account person */}
-            <div className="flex items-center justify-center w-full">
+            <div className="flex items-center justify-center w-full mb-4">
                 <Image
                     src={userImage}
                     alt="User Image"
                     width={30}
                     height={30}
-                    className="rounded-full"
+                    className="rounded-full -ml-4 mr-4"
                     unoptimized
                 />
                 <p className="">{session?.user?.name}</p>
