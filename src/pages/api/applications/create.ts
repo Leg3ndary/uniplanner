@@ -21,5 +21,23 @@ export default async function handler(
         return res.status(401).json({ success: false });
     }
 
+    // test create application in db
+
+    await prisma.application.create({
+        data: {
+            slug: "test-slug" + Math.random(),
+            title: "Test Application",
+            questions: [],
+            extracurriculars: [],
+            awards: [],
+            deadline: null,
+            user: {
+                connect: {
+                    email: session.user.email as string,
+                },
+            },
+        },
+    });
+
     res.status(200).json({ success: true });
 }
