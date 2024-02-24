@@ -32,8 +32,15 @@ export default async function handler(
             awards: [],
             deadline: null,
             user: {
-                connect: {
-                    email: session.user.email as string,
+                connectOrCreate: {
+                    where: {
+                        email: session.user.email as string,
+                    },
+                    create: {
+                        email: session.user.email as string,
+                        name: session.user.name as string,
+                        grades: [],
+                    },
                 },
             },
         },

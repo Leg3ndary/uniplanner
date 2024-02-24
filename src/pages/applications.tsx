@@ -45,8 +45,6 @@ export const getServerSideProps: any = (async (
         },
     });
 
-    console.log(apps);
-
     return {
         props: {
             applications: apps as unknown as Prisma.ApplicationCreateInput[],
@@ -57,9 +55,7 @@ export const getServerSideProps: any = (async (
 export default function Applications({
     applications,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
-
     async function createApplication() {
-        console.log("Create application");
         await fetch("/api/applications/create", {
             method: "POST",
             headers: {
@@ -89,25 +85,6 @@ export default function Applications({
             <div className="w-full flex">
                 <div className="relative w-64" />
                 <div className="flex-1 p-8 ml-4 grid grid-flow-row grid-cols-3 items-center justify-center gap-12">
-                    {/* <div className="flex justify-center mb-4 h-80 rounded-xl bg-white shadow-xl transition-all duration-800 ease-in-out cursor-pointer">
-                        <div className="flex items-center h-12 m-4">
-                            <Image
-                                src={Waterloo}
-                                alt="Waterloo"
-                                className="rounded-xl h-12 w-12"
-                            />
-
-                            <h4 className="text-black mx-4 text-2xl">
-                                University of Waterloo
-                            </h4>
-                        </div>
-                    </div>
-                    <div className="group flex items-center justify-center mb-4 border-4 h-80 border-gray-300 border-dashed bg-white rounded-xl hover:bg-gray-300 transition-all duration-800 ease-in-out cursor-pointer">
-                        <FaPlus className="text-gray-300 group-hover:text-white duration-800 transition-all text-4xl" />
-                        <h4 className="text-gray-300 group-hover:text-white duration-800 transition-all mx-4">
-                            Add New
-                        </h4>
-                    </div> */}
                     {applications.map((app: Prisma.ApplicationCreateInput) => (
                         <div
                             key={app.slug}
