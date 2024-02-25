@@ -9,12 +9,12 @@ generator client {
 }
 
 model User {
-  id           String          @id @default(auto()) @map("_id") @db.ObjectId
-  email        String          @unique
-  name         String
-  grades       Grade[]
-  applications ApplicationId[]
-  Application  Application[]
+  id          String        @id @default(auto()) @map("_id") @db.ObjectId
+  email       String        @unique
+  name        String
+  grades      Grade[]
+  tier        Int           @default(0)
+  Application Application[]
 }
 
 model Application {
@@ -27,15 +27,6 @@ model Application {
   deadline         DateTime?
   user             User              @relation(fields: [userId], references: [id])
   userId           String            @db.ObjectId
-  ApplicationId    ApplicationId[]
-}
-
-model ApplicationId {
-  id            String      @id @default(auto()) @map("_id") @db.ObjectId
-  application   Application @relation(fields: [applicationId], references: [id])
-  applicationId String      @db.ObjectId
-  user          User        @relation(fields: [userId], references: [id])
-  userId        String      @db.ObjectId
 }
 
 type Question {

@@ -21,12 +21,12 @@ export default async function handler(
         return res.status(401).json({ success: false });
     }
 
-    // test create application in db
+    const { body } = req;
 
     await prisma.application.create({
         data: {
             slug: "test-slug" + Math.random(),
-            title: "Test Application",
+            title: body.title as string,
             questions: [],
             extracurriculars: [],
             awards: [],
