@@ -11,13 +11,15 @@ export default function Footer() {
                     UniPlanner helps students plan their academic journey.
                 </p>
             </div>
-            <div className="flex flex-col">
-                <h4 className="text-2xl font-black text-white text-center">
+            <div className="flex flex-col ml-24">
+                <h4 className="text-2xl font-black text-white p-4">
                     Quick Links
                 </h4>
-                <ul className="text-white text-xl">
+                <ul className="text-white text-xl p-4">
                     <li>
-                        <Link href="/">Home</Link>
+                        <Link href="/" className="m-4">
+                            Home
+                        </Link>
                     </li>
                     <li>
                         <Link href="/about">About</Link>
