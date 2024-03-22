@@ -22,6 +22,7 @@ export default async function handler(
     }
 
     const { body } = req;
+    const appDeadline = new Date(body.deadline as string);
 
     await prisma.application.create({
         data: {
@@ -30,7 +31,10 @@ export default async function handler(
             questions: [],
             extracurriculars: [],
             awards: [],
-            deadline: null,
+            deadline: appDeadline,
+            university: "test",
+            program: "testing",
+            status: 0,
             user: {
                 connectOrCreate: {
                     where: {

@@ -14,3 +14,10 @@ export type PriceBoxProps = {
         href: string;
     };
 };
+
+export type University = {
+    domains: string[];
+    name: string;
+    web_pages: string[];
+    image: string;
+}

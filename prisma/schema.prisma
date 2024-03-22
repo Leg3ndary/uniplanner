@@ -21,6 +21,9 @@ model Application {
   id               String            @id @default(auto()) @map("_id") @db.ObjectId
   slug             String            @unique
   title            String
+  university       String
+  program          String
+  status           Int // 0: Incomplete, 1: Submitted, 2: Accepted, 3: Rejected 4: Waitlisted 5: Deferred 6: Withdrawn 7: Pending
   questions        Question[]
   extracurriculars Extracurricular[]
   awards           Award[]
@@ -32,7 +35,7 @@ model Application {
 type Question {
   question  String
   answer    String
-  limitType String?
+  limitType Int // 0: None 1: Word 2: Character 3: Paragraph
   limit     Int?
   completed Boolean
 }
@@ -43,6 +46,8 @@ type Grade {
   code   String
   mark   Int?
   grade  Int
+  credit Int
+  year   Int
 }
 
 type Extracurricular {
