@@ -12,18 +12,18 @@ model User {
   id          String        @id @default(auto()) @map("_id") @db.ObjectId
   email       String        @unique
   name        String
+  tier        Tier          @default(Free)
   grades      Grade[]
-  tier        Int           @default(0)
   Application Application[]
 }
 
 model Application {
-  id               String            @id @default(auto()) @map("_id") @db.ObjectId
+  application_id   String            @id @default(auto()) @map("_id") @db.ObjectId
   slug             String            @unique
   title            String
   university       String
   program          String
-  status           Int // 0: Incomplete, 1: Submitted, 2: Accepted, 3: Rejected 4: Waitlisted 5: Deferred 6: Withdrawn 7: Pending
+  status           AppStatus         @default(Incomplete)
   questions        Question[]
   extracurriculars Extracurricular[]
   awards           Award[]
@@ -35,7 +35,7 @@ model Application {
 type Question {
   question  String
   answer    String
-  limitType Int // 0: None 1: Word 2: Character 3: Paragraph
+  limitType LimitType @default(None)
   limit     Int?
   completed Boolean
 }
@@ -66,4 +66,29 @@ type Award {
   reference   String
   ranking     Int?
   score       Int?
+}
+
+enum LimitType {
+  None
+  Word
+  Character
+  Paragraph
+}
+
+enum AppStatus {
+  Incomplete
+  Submitted
+  Accepted
+  Rejected
+  Waitlisted
+  Deferred
+  Withdrawn
+  Pending
+}
+
+enum Tier {
+  Free
+  Basic
+  Premium
+  Enterprise
 }
