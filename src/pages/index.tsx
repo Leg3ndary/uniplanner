@@ -5,9 +5,11 @@ export default function Home() {
     return (
         <main className="flex flex-col items-center min-h-screen">
             <div className="relative flex flex-col items-center justify-center w-full bg-center bg-cover h-128 bg-[url('/../hero.jpg')] p-4">
-                <div className="absolute inset-0 bg-black opacity-50"></div>
-                <h1 className="z-10 text-white">UniPlanner</h1>
-                <h4 className="z-10 text-white text-center">
+                <div className="absolute inset-0 bg-black opacity-60"></div>
+                <h1 className="z-10  text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-purple-500 text-4xl md:text-6xl lg:text-7xl my-2">
+                    UniPlanner
+                </h1>
+                <h4 className="z-10 text-white text-center text-base md:text-2xl lg:text-3xl my-2">
                     Empowering students to effectively plan, organize, and
                     navigate their university applications.
                 </h4>
