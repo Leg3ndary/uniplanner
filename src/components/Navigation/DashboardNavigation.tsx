@@ -21,7 +21,7 @@ export default function DashboardNavigation({ active }: { active: string }) {
             <div className="flex flex-col w-full px-4">
                 <Link
                     href="/dashboard"
-                    className={`flex items-center p-3 my-1 rounded-xl px-4 transition-all duration-400 ease-in-out ${
+                    className={`flex items-center p-3 my-1 rounded-lg px-4 transition-all duration-400 ease-in-out ${
                         active === "dashboard"
                             ? "font-semibold bg-cyan-50/95 hover:bg-cyan-100/95"
                             : "hover:bg-cyan-50/95"
@@ -32,7 +32,7 @@ export default function DashboardNavigation({ active }: { active: string }) {
                 </Link>
                 <Link
                     href="/applications"
-                    className={`flex items-center p-3 my-1 rounded-xl px-4 transition-all duration-400 ease-in-out ${
+                    className={`flex items-center p-3 my-1 rounded-lg px-4 transition-all duration-400 ease-in-out ${
                         active === "applications"
                             ? "font-semibold bg-purple-100/95 hover:bg-purple-200/95"
                             : "hover:bg-purple-100/95"
@@ -43,7 +43,7 @@ export default function DashboardNavigation({ active }: { active: string }) {
                 </Link>
                 <Link
                     href="/grades"
-                    className={`flex items-center p-3 my-1 rounded-xl px-4 transition-all duration-400 ease-in-out ${
+                    className={`flex items-center p-3 my-1 rounded-lg px-4 transition-all duration-400 ease-in-out ${
                         active === "grades"
                             ? "font-semibold bg-emerald-100/95 hover:bg-emerald-200/95"
                             : "hover:bg-emerald-100/95"

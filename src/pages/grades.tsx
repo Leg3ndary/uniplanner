@@ -1,18 +1,17 @@
 import DashLayout from "@/layouts/dashLayout";
 import DashboardNavigation from "@/components/Navigation/DashboardNavigation";
 
-export default function Applications() {
+export default function Grades() {
     return (
         <main className="flex w-full">
-            <div className="h-48 bg-emerald-500 w-full flex">
+            <div className="h-48 bg-gradient-to-r from-yellow-500 to-fuchsia-500 w-full flex">
                 <div className="relative w-64 mr-8">
                     <DashboardNavigation active="grades" />
                 </div>
-                <div className="flex-1">
+                <div className="flex-1 p-4">
                     <h1 className="text-white">Grades</h1>
-                    <p className="text-white">
-                        Welcome to the dashboard, here you can view your
-                        applications and more!sssss
+                    <p className="text-white text-lg">
+                        Grades overview.
                     </p>
                 </div>
             </div>
@@ -20,6 +19,6 @@ export default function Applications() {
     );
 }
 
-Applications.getLayout = function getLayout(page: JSX.Element) {
+Grades.getLayout = function getLayout(page: JSX.Element) {
     return <DashLayout>{page}</DashLayout>;
 };

@@ -117,15 +117,14 @@ export default function Applications({
                     </motion.div>
                 )}
             </AnimatePresence>
-            <div className="h-48 bg-purple-500 w-full flex">
+            <div className="h-48 bg-gradient-to-r from-green-500 to-cyan-500 w-full flex">
                 <div className="relative w-64 mr-8">
                     <DashboardNavigation active="applications" />
                 </div>
-                <div className="flex-1">
+                <div className="flex-1 p-4">
                     <h1 className="text-white">Applications</h1>
-                    <p className="text-white">
-                        Welcome to the dashboard, here you can view your
-                        applications and more!sssss
+                    <p className="text-white text-lg">
+                        You have {applications.length} applications created.
                     </p>
                 </div>
             </div>
