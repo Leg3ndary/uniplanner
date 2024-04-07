@@ -13,27 +13,30 @@ export default function Footer() {
             </div>
             <div className="grid md:grid-cols-2 grid-cols-1">
                 <div className="flex flex-col items-center md:items-start">
-                    <h3 className="text-2xl font-bold text-white my-4 underline underline-offset-8">
+                    <h3 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-purple-500 my-4">
                         Quick Links
+                        <div className="h-0.5 bg-gradient-to-r from-cyan-500 to-purple-500 w-full" />
                     </h3>
+                    
                     <ul className="text-white text-lg space-y-1">
                         <li>
-                            <Link href="/">Home</Link>
+                            <Link href="/" className="transition-all duration-300 ease-in-out hover:text-cyan-400">Home</Link>
                         </li>
                         <li>
-                            <Link href="/about">About</Link>
+                            <Link href="/about" className="transition-all duration-300 ease-in-out hover:text-cyan-400">About</Link>
                         </li>
                         <li>
-                            <Link href="/pricing">Pricing</Link>
+                            <Link href="/pricing" className="transition-all duration-300 ease-in-out hover:text-cyan-400">Pricing</Link>
                         </li>
                         <li>
-                            <Link href="/">Contact</Link>
+                            <Link href="/" className="transition-all duration-300 ease-in-out hover:text-cyan-400">Contact</Link>
                         </li>
                     </ul>
                 </div>
                 <div className="flex flex-col items-center md:items-start">
-                    <h3 className="text-2xl font-bold text-white my-4 underline underline-offset-8">
+                    <h3 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-purple-500 my-4">
                         Contact
+                        <div className="h-0.5 bg-gradient-to-r from-cyan-500 to-purple-500 w-full" />
                     </h3>
                     <p className="text-white">
                         We will have an email here soon.
