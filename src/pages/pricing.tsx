@@ -13,7 +13,7 @@ export default function Pricing() {
                     thanks for your support!
                 </p>
 
-                <div className="grid justify-center grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 items-stretch">
+                <div className="grid justify-center grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 items-stretch my-16">
                     {pricesInfo.map((price) => (
                         <PriceBox key={price.type} {...price} />
                     ))}
