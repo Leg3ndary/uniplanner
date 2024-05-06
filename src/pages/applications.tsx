@@ -8,12 +8,13 @@ import type {
     InferGetServerSidePropsType,
     GetServerSidePropsContext,
 } from "next";
-import { Prisma } from "@prisma/client";
+import { Prisma, AppStatus } from "@prisma/client";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import prisma from "@/lib/prisma";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaTrashCan } from "react-icons/fa6";
+import { universities } from "@/data/universities";
 
 export const getServerSideProps: any = (async (
     context: GetServerSidePropsContext,
@@ -113,6 +114,45 @@ export default function Applications({
                                 />
                             </div>
                             <h3 className="px-3">Create Application</h3>
+                            {/* Create a form asking for everything needed and then use prisma to create it */}
+                            <form
+                                onSubmit={(e) => {
+                                    e.preventDefault();
+                                    const title = e.target[0].value;
+                                    createApplication(title);
+                                    setCreateAppOpen(false);
+                                }}
+                                className="flex flex-col p-4 gap-4"
+                            >
+                                <div className="flex gap-4">
+                                    <select
+                                        className="p-2 bg-gray-100 border-2 rounded-xl w-1/3"
+                                        name="university"
+                                    >
+                                        {universities.map((uni) => (
+                                            <option
+                                                key={uni.name}
+                                                value={uni.name}
+                                            >
+                                                {uni.name}
+                                            </option>
+                                        ))}
+                                    </select>
+                                    <input
+                                        type="text"
+                                        name="title"
+                                        placeholder="Program"
+                                        className="p-2 bg-gray-100 border-2 rounded-xl w-1/3"
+                                    ></input>
+                                </div>
+
+                                <button
+                                    type="submit"
+                                    className="p-2 bg-green-500 text-white rounded-xl"
+                                >
+                                    Create Application
+                                </button>
+                            </form>
                         </div>
                     </motion.div>
                 )}
@@ -137,14 +177,8 @@ export default function Applications({
                             className="flex justify-center mb-4 h-80 rounded-xl bg-white shadow-xl transition-all duration-800 ease-in-out cursor-pointer"
                         >
                             <div className="flex items-center h-12 m-4">
-                                <Image
-                                    src={Waterloo}
-                                    alt="Waterloo"
-                                    className="rounded-xl h-12 w-12"
-                                />
-
                                 <h4 className="text-black mx-4 text-2xl">
-                                    {app.title}
+                                    {app.university}
                                 </h4>
                             </div>
                         </div>

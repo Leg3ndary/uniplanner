@@ -20,7 +20,6 @@ model User {
 model Application {
   application_id   String            @id @default(auto()) @map("_id") @db.ObjectId
   slug             String            @unique
-  title            String
   university       String
   program          String
   status           AppStatus         @default(Incomplete)
