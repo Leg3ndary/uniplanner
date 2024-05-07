@@ -117,8 +117,8 @@ export default function Applications({
                             <form
                                 onSubmit={(e) => {
                                     e.preventDefault();
-                                    const title = e.target[0].value;
-                                    createApplication(title);
+                                    // const title = e.target[0].value;
+                                    // createApplication(title);
                                     setCreateAppOpen(false);
                                 }}
                                 className="flex flex-col p-4 gap-4"
@@ -142,13 +142,20 @@ export default function Applications({
                                         name="program"
                                         id="program"
                                         placeholder="Program"
-                                        className="p-2 bg-gray-100 border-2 rounded-lg w-1/3 focus:border-cyan-400"
+                                        className="py-2 px-4 bg-gray-100 border rounded-lg w-1/3 hover:border-cyan-500 "
+                                    />
+                                    <input
+                                        type="date"
+                                        name="deadline"
+                                        id="deadline"
+                                        placeholder="Deadline"
+                                        className="py-2 px-4 bg-gray-100 border rounded-lg w-1/3 focus:border-cyan-500"
                                     />
                                 </div>
 
                                 <button
                                     type="submit"
-                                    className="p-2 bg-green-500 text-white rounded-xl"
+                                    className="py-2 px-4 bg-green-500 text-white rounded-lg w- ml-auto"
                                 >
                                     Create Application
                                 </button>
