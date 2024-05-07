@@ -44,18 +44,21 @@ export default function DefaultNavigation() {
                     <Link
                         href="/"
                         className="text-lg font-extrabold text-white transition-all duration-300 ease-in-out hover:text-cyan-400"
+                        prefetch={false}
                     >
                         Home
                     </Link>
                     <Link
                         href="/pricing"
                         className="text-lg font-bold text-white transition-all duration-300 ease-in-out hover:text-cyan-400"
+                        prefetch={false}
                     >
                         Pricing
                     </Link>
                     <Link
                         href="/about"
                         className="text-lg font-bold text-white transition-all duration-300 ease-in-out hover:text-cyan-400"
+                        prefetch={false}
                     >
                         About
                     </Link>
@@ -92,6 +95,7 @@ export default function DefaultNavigation() {
                                         href="/dashboard"
                                         className="text-lg font-bold text-black transition-all duration-300 ease-in-out hover:text-cyan-400"
                                         onClick={() => setAccountPopup(false)}
+                                        prefetch={false}
                                     >
                                         <div className="flex items-center gap-2">
                                             <RxDashboard />
@@ -145,6 +149,7 @@ export default function DefaultNavigation() {
                                     href="/"
                                     className="text-lg font-bold text-black transition-all duration-300 ease-in-out hover:text-cyan-400"
                                     onClick={() => setMobileMenuOpen(false)}
+                                    prefetch={false}
                                 >
                                     <div className="flex items-center gap-2">
                                         <FaHome />
@@ -155,6 +160,7 @@ export default function DefaultNavigation() {
                                     href="/pricing"
                                     className="text-lg font-bold text-black transition-all duration-300 ease-in-out hover:text-cyan-400"
                                     onClick={() => setMobileMenuOpen(false)}
+                                    prefetch={false}
                                 >
                                     Pricing
                                 </Link>
@@ -162,6 +168,7 @@ export default function DefaultNavigation() {
                                     href="/about"
                                     className="text-lg font-bold text-black transition-all duration-300 ease-in-out hover:text-cyan-400"
                                     onClick={() => setMobileMenuOpen(false)}
+                                    prefetch={false}
                                 >
                                     About
                                 </Link>
@@ -170,6 +177,7 @@ export default function DefaultNavigation() {
                                         href="/dashboard"
                                         className="text-lg font-bold text-black transition-all duration-300 ease-in-out hover:text-cyan-400"
                                         onClick={() => setMobileMenuOpen(false)}
+                                        prefetch={false}
                                     >
                                         <div className="flex items-center gap-2">
                                             <RxDashboard />
