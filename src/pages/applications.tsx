@@ -114,7 +114,6 @@ export default function Applications({
                                 />
                             </div>
                             <h3 className="px-3">Create Application</h3>
-                            {/* Create a form asking for everything needed and then use prisma to create it */}
                             <form
                                 onSubmit={(e) => {
                                     e.preventDefault();
@@ -126,7 +125,7 @@ export default function Applications({
                             >
                                 <div className="flex gap-4">
                                     <select
-                                        className="p-2 bg-gray-100 border-2 rounded-xl w-1/3"
+                                        className="p-2 bg-gray-100 border-2 rounded-lg w-1/3"
                                         name="university"
                                     >
                                         {universities.map((uni) => (
@@ -140,10 +139,11 @@ export default function Applications({
                                     </select>
                                     <input
                                         type="text"
-                                        name="title"
+                                        name="program"
+                                        id="program"
                                         placeholder="Program"
-                                        className="p-2 bg-gray-100 border-2 rounded-xl w-1/3"
-                                    ></input>
+                                        className="p-2 bg-gray-100 border-2 rounded-lg w-1/3 focus:border-cyan-400"
+                                    />
                                 </div>
 
                                 <button
