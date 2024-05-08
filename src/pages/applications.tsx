@@ -2,8 +2,8 @@ import DashLayout from "@/layouts/dashLayout";
 import DashboardNavigation from "@/components/Navigation/DashboardNavigation";
 import { FaPlus } from "react-icons/fa";
 import { useState, useRef, useEffect } from "react";
-import Image from "next/image";
-import Waterloo from "@/../public/waterloo.png";
+// import Image from "next/image";
+// import Waterloo from "@/../public/waterloo.png";
 import type {
     InferGetServerSidePropsType,
     GetServerSidePropsContext,
