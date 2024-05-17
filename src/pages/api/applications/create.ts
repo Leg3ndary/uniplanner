@@ -2,6 +2,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import prisma from "@/lib/prisma";
+import { AppStatus } from "@prisma/client";
 
 type Data = {
     success: boolean;
@@ -27,14 +28,14 @@ export default async function handler(
     await prisma.application.create({
         data: {
             slug: "test-slug" + Math.random(),
-            title: body.title as string,
+            // title: body.title as string,
             questions: [],
             extracurriculars: [],
             awards: [],
             deadline: appDeadline,
             university: "test",
             program: "testing",
-            status: 0,
+            status: AppStatus.Incomplete,
             user: {
                 connectOrCreate: {
                     where: {
