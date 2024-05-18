@@ -14,7 +14,7 @@ export default function Home() {
                     navigate their university applications.
                 </h4>
             </div>
-            <section className="flex flex-col items-center justify-center w-full max-w-[1400px] p-4">
+            <section className="flex flex-col items-center justify-center w-full max-w-[1400px] p-16">
                 <div className="grid grid-flow-row grid-cols-1 md:grid-cols-2 items-center w-3/4 p-4 m-8 gap-16">
                     <div className="flex flex-col justify-center flex-1 px-4 py-2 bg-white shadow-2xl rounded-xl">
                         <div className="bg-gradient-to-r from-green-500 to-cyan-500 bg-clip-text">

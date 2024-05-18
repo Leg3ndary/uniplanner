@@ -4,7 +4,7 @@ import pricesInfo from "@/data/prices";
 
 export default function Pricing() {
     return (
-        <main className="flex flex-col items-center min-h-screen">
+        <main className="flex flex-col items-center">
             <div className="max-w-[1400px] w-full p-4">
                 <h1 className="text-black text-center m-4">Premium Features</h1>
                 <hr className="my-6" />
