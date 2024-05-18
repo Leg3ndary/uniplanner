@@ -4,7 +4,7 @@ import DefaultLayout from "@/layouts/default";
 export default function Home() {
     return (
         <main className="flex flex-col items-center min-h-screen">
-            <div className="relative flex flex-col items-center justify-center w-full bg-center bg-cover h-128 bg-[url('/../hero.jpg')] p-4">
+            <div className="relative flex flex-col items-center justify-center w-full bg-center bg-cover h-64 md:h-128 bg-[url('/../hero.jpg')] p-4">
                 <div className="absolute inset-0 bg-black opacity-60"></div>
                 <h1 className="z-10  text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-purple-500 text-4xl md:text-6xl lg:text-7xl my-8">
                     UniPlanner
@@ -15,7 +15,7 @@ export default function Home() {
                 </h4>
             </div>
             <section className="flex flex-col items-center justify-center w-full max-w-[1400px] p-4">
-                <div className="grid grid-flow-row grid-cols-2 items-center w-3/4 p-4 m-8 gap-16">
+                <div className="grid grid-flow-row grid-cols-1 md:grid-cols-2 items-center w-3/4 p-4 m-8 gap-16">
                     <div className="flex flex-col justify-center flex-1 px-4 py-2 bg-white shadow-2xl rounded-xl">
                         <div className="bg-gradient-to-r from-green-500 to-cyan-500 bg-clip-text">
                             <h2 className="text-center text-4xl mt-6 mb-2 text-transparent font-black underline">
@@ -49,7 +49,7 @@ export default function Home() {
                         </div>
                     </div>
                 </div>
-                <div className="grid grid-flow-row grid-cols-2 items-center w-3/4 p-4 m-8 gap-16">
+                <div className="grid grid-flow-row grid-cols-1 md:grid-cols-2 items-center w-3/4 p-4 m-8 gap-16">
                     <div className="flex flex-col justify-center flex-1 bg-white shadow-2xl rounded-xl">
                         <div className="flex items-center justify-between px-4 py-2 bg-gradient-to-r from-purple-500 to-fuchsia-500 rounded-t-xl">
                             <div className="text-white font-bold">
@@ -83,7 +83,7 @@ export default function Home() {
                         </p>
                     </div>
                 </div>
-                <div className="grid grid-flow-row grid-cols-2 items-center w-3/4 p-4 m-8 gap-16">
+                <div className="grid grid-flow-row grid-cols-1 md:grid-cols-2 items-center w-3/4 p-4 m-8 gap-16">
                     <div className="flex flex-col justify-center flex-1 px-4 py-2 bg-white shadow-2xl rounded-xl">
                         <div className="bg-gradient-to-r from-yellow-500 to-red-500 bg-clip-text">
                             <h2 className="text-center text-4xl mt-6 mb-2 text-transparent font-black underline">
