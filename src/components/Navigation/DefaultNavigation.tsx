@@ -86,7 +86,7 @@ export default function DefaultNavigation() {
                         <AnimatePresence>
                             {accountPopup && (
                                 <motion.div
-                                    className="absolute right-0 z-10 flex flex-col px-4 py-2 mt-2 bg-white rounded-md shadow-2xl top-full"
+                                    className="absolute right-0 z-10 flex flex-col px-8 py-4 mt-2 bg-white rounded-md shadow-2xl top-full"
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     exit={{ opacity: 0, y: 20 }}
