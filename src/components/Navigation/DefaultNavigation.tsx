@@ -86,14 +86,14 @@ export default function DefaultNavigation() {
                         <AnimatePresence>
                             {accountPopup && (
                                 <motion.div
-                                    className="absolute right-0 z-10 flex flex-col px-8 py-4 mt-2 bg-white rounded-md shadow-2xl top-full"
+                                    className="absolute right-0 z-10 flex flex-col px-8 py-4 mt-2 bg-white rounded-md shadow-2xl top-full gap-3"
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     exit={{ opacity: 0, y: 20 }}
                                 >
                                     <Link
                                         href="/dashboard"
-                                        className="text-lg font-bold text-black transition-all duration-300 ease-in-out hover:text-cyan-400"
+                                        className="text-2xl font-bold text-black transition-all duration-300 ease-in-out hover:text-cyan-400"
                                         onClick={() => setAccountPopup(false)}
                                         prefetch={false}
                                     >
@@ -108,7 +108,7 @@ export default function DefaultNavigation() {
                                             signOut({ callbackUrl: "/" });
                                             setAccountPopup(false);
                                         }}
-                                        className="text-lg font-bold text-black transition-all duration-300 ease-in-out hover:text-red-400"
+                                        className="text-2xl font-bold text-black transition-all duration-300 ease-in-out hover:text-red-500"
                                     >
                                         <div className="flex items-center gap-2">
                                             <FaSignOutAlt />
