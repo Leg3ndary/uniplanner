@@ -104,7 +104,7 @@ export default function Applications({
                         className="absolute bg-[#00000080] h-screen w-screen z-50 flex p-16 px-32"
                     >
                         <div
-                            className="relative m-auto h-full w-full max-h-[700px] max-w-[1300px] bg-white p-3 rounded-xl"
+                            className="relative m-auto h-auto w-full max-h-[700px] max-w-[1300px] bg-white p-3 rounded-xl"
                             ref={createAppRef}
                         >
                             <div className="absolute top-0 right-0 m-6 cursor-pointer">
@@ -121,7 +121,7 @@ export default function Applications({
                                     // createApplication(title);
                                     setCreateAppOpen(false);
                                 }}
-                                className="flex flex-col p-4 gap-4"
+                                className="flex flex-col p-4 gap-4 h-max"
                             >
                                 <div className="flex gap-4">
                                     <select
@@ -152,10 +152,32 @@ export default function Applications({
                                         className="py-2 px-4 bg-gray-100 border rounded-lg w-1/3 focus:border-cyan-500"
                                     />
                                 </div>
-
+                                <div className="flex gap-4">
+                                    <input
+                                        type="text"
+                                        name="status"
+                                        id="status"
+                                        placeholder="Status"
+                                        className="py-2 px-4 bg-gray-100 border rounded-lg w-1/3 hover:border-cyan-500"
+                                    />
+                                    <input
+                                        type="text"
+                                        name="location"
+                                        id="location"
+                                        placeholder="Location"
+                                        className="py-2 px-4 bg-gray-100 border rounded-lg w-1/3 hover:border-cyan-500"
+                                    />
+                                    <input
+                                        type="text"
+                                        name="website"
+                                        id="website"
+                                        placeholder="Website"
+                                        className="py-2 px-4 bg-gray-100 border rounded-lg w-1/3 hover:border-cyan-500"
+                                    />
+                                </div>
                                 <button
                                     type="submit"
-                                    className="py-2 px-4 bg-green-500 text-white rounded-lg w- ml-auto"
+                                    className="py-2 px-4 bg-green-500 text-white rounded-lg mt-auto ml-auto"
                                 >
                                     Create Application
                                 </button>
