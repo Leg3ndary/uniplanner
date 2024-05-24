@@ -16,6 +16,9 @@ const config: Config = {
             height: {
                 128: "32rem",
             },
+            flex: {
+                2: "2 2 0%",
+            }
         },
     },
     plugins: [],

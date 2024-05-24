@@ -125,7 +125,7 @@ export default function Applications({
                             >
                                 <div className="flex gap-4">
                                     <select
-                                        className="p-2 bg-gray-100 border-2 rounded-lg w-1/3"
+                                        className="p-2 bg-gray-100 border-2 rounded-lg flex-1"
                                         name="university"
                                     >
                                         {universities.map((uni) => (
@@ -142,37 +142,24 @@ export default function Applications({
                                         name="program"
                                         id="program"
                                         placeholder="Program"
-                                        className="py-2 px-4 bg-gray-100 border rounded-lg w-1/3 hover:border-cyan-500 "
+                                        className="py-2 px-4 bg-gray-100 border rounded-lg flex-2    hover:border-cyan-500 "
                                     />
+                                    <select
+                                        className="p-2 bg-gray-100 border-2 rounded-lg"
+                                        name="status"
+                                    >
+                                        {Object.keys(AppStatus).map((status) => (
+                                            <option key={status} value={status}>
+                                                {status}
+                                            </option>
+                                        ))}
+                                    </select>
                                     <input
                                         type="date"
                                         name="deadline"
                                         id="deadline"
                                         placeholder="Deadline"
-                                        className="py-2 px-4 bg-gray-100 border rounded-lg w-1/3 focus:border-cyan-500"
-                                    />
-                                </div>
-                                <div className="flex gap-4">
-                                    <input
-                                        type="text"
-                                        name="status"
-                                        id="status"
-                                        placeholder="Status"
-                                        className="py-2 px-4 bg-gray-100 border rounded-lg w-1/3 hover:border-cyan-500"
-                                    />
-                                    <input
-                                        type="text"
-                                        name="location"
-                                        id="location"
-                                        placeholder="Location"
-                                        className="py-2 px-4 bg-gray-100 border rounded-lg w-1/3 hover:border-cyan-500"
-                                    />
-                                    <input
-                                        type="text"
-                                        name="website"
-                                        id="website"
-                                        placeholder="Website"
-                                        className="py-2 px-4 bg-gray-100 border rounded-lg w-1/3 hover:border-cyan-500"
+                                        className="py-2 px-4 bg-gray-100 border rounded-lg focus:border-cyan-500"
                                     />
                                 </div>
                                 <button
