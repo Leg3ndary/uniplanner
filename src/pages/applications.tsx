@@ -148,11 +148,16 @@ export default function Applications({
                                         className="p-2 bg-gray-100 border-2 rounded-lg"
                                         name="status"
                                     >
-                                        {Object.keys(AppStatus).map((status) => (
-                                            <option key={status} value={status}>
-                                                {status}
-                                            </option>
-                                        ))}
+                                        {Object.keys(AppStatus).map(
+                                            (status) => (
+                                                <option
+                                                    key={status}
+                                                    value={status}
+                                                >
+                                                    {status}
+                                                </option>
+                                            ),
+                                        )}
                                     </select>
                                     <input
                                         type="date"
