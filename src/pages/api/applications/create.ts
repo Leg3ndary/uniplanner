@@ -1,55 +1,24 @@
-import type { NextApiRequest, NextApiResponse } from "next";
-import { getServerSession } from "next-auth/next";
-import { authOptions } from "@/pages/api/auth/[...nextauth]";
+import { NextApiRequest, NextApiResponse } from "next";
 import prisma from "@/lib/prisma";
-import { AppStatus } from "@prisma/client";
 
-type Data = {
-    success: boolean;
-};
-
-export default async function handler(
+export default async function handle(
     req: NextApiRequest,
-    res: NextApiResponse<Data>,
+    res: NextApiResponse,
 ) {
-    if (req.method !== "POST") {
-        return res.status(405).json({ success: false });
+    if (req.method === "POST") {
+        const data = req.body;
+
+        try {
+            const newApplication = await prisma.application.create({
+                data,
+            });
+            res.status(200).json(newApplication);
+        } catch (error) {
+            res.status(500).json({ error: "Error creating application" });
+            console.log(error);
+        }
+    } else {
+        res.setHeader("Allow", ["POST"]);
+        res.status(405).end(`Method ${req.method} Not Allowed`);
     }
-
-    const session = await getServerSession(req, res, authOptions);
-
-    if (!session) {
-        return res.status(401).json({ success: false });
-    }
-
-    const { body } = req;
-    const appDeadline = new Date(body.deadline as string);
-
-    await prisma.application.create({
-        data: {
-            slug: "test-slug" + Math.random(),
-            // title: body.title as string,
-            questions: [],
-            extracurriculars: [],
-            awards: [],
-            deadline: appDeadline,
-            university: "test",
-            program: "testing",
-            status: AppStatus.Incomplete,
-            user: {
-                connectOrCreate: {
-                    where: {
-                        email: session.user.email as string,
-                    },
-                    create: {
-                        email: session.user.email as string,
-                        name: session.user.name as string,
-                        grades: [],
-                    },
-                },
-            },
-        },
-    });
-
-    res.status(200).json({ success: true });
 }

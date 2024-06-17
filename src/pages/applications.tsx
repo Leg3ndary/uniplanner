@@ -2,8 +2,6 @@ import DashLayout from "@/layouts/dashLayout";
 import DashboardNavigation from "@/components/Navigation/DashboardNavigation";
 import { FaPlus } from "react-icons/fa";
 import { useState, useRef, useEffect } from "react";
-// import Image from "next/image";
-// import Waterloo from "@/../public/waterloo.png";
 import type {
     InferGetServerSidePropsType,
     GetServerSidePropsContext,
@@ -52,26 +50,27 @@ export const getServerSideProps: any = (async (
     return {
         props: {
             applications: apps as unknown as Prisma.ApplicationCreateInput[],
+            user,
         },
     };
 }) satisfies InferGetServerSidePropsType<typeof getServerSideProps>;
 
 export default function Applications({
     applications,
+    user,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
     const [createAppOpen, setCreateAppOpen] = useState(false);
     const createAppRef = useRef<HTMLDivElement>(null);
 
-    async function createApplication(title: string) {
+    async function createApplication(
+        applicationData: Prisma.ApplicationCreateInput,
+    ) {
         await fetch("/api/applications/create", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({
-                title: title,
-                slug: "new-application",
-            }),
+            body: JSON.stringify(applicationData),
         });
     }
 
@@ -115,10 +114,35 @@ export default function Applications({
                             </div>
                             <h3 className="px-3">Create Application</h3>
                             <form
-                                onSubmit={(e) => {
+                                onSubmit={async (e) => {
                                     e.preventDefault();
-                                    // const title = e.target[0].value;
-                                    // createApplication(title);
+                                    const formData = new FormData(
+                                        e.currentTarget,
+                                    );
+                                    const applicationData: Prisma.ApplicationCreateInput =
+                                        {
+                                            university: formData.get(
+                                                "university",
+                                            ) as string,
+                                            program: formData.get(
+                                                "program",
+                                            ) as string,
+                                            status: formData.get(
+                                                "status",
+                                            ) as AppStatus,
+                                            deadline: formData.get("deadline")
+                                                ? new Date(
+                                                      formData.get(
+                                                          "deadline",
+                                                      ) as string,
+                                                  )
+                                                : null,
+                                            slug: `${formData.get("university")}-${formData.get("program")}`
+                                                .toLowerCase()
+                                                .replace(/ /g, "-"),
+                                            user: user,
+                                        };
+                                    await createApplication(applicationData);
                                     setCreateAppOpen(false);
                                 }}
                                 className="flex flex-col p-4 gap-4 h-max"
@@ -142,7 +166,7 @@ export default function Applications({
                                         name="program"
                                         id="program"
                                         placeholder="Program"
-                                        className="py-2 px-4 bg-gray-100 border rounded-lg flex-2    hover:border-cyan-500 "
+                                        className="py-2 px-4 bg-gray-100 border rounded-lg flex-2 hover:border-cyan-500"
                                     />
                                     <select
                                         className="p-2 bg-gray-100 border-2 rounded-lg"
