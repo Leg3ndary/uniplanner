@@ -6,7 +6,7 @@ import type {
     InferGetServerSidePropsType,
     GetServerSidePropsContext,
 } from "next";
-import { Prisma, AppStatus } from "@prisma/client";
+import { Prisma, AppStatus, LimitType } from "@prisma/client";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import prisma from "@/lib/prisma";
@@ -14,7 +14,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { FaTrashCan } from "react-icons/fa6";
 import { universities } from "@/data/universities";
 
-export const getServerSideProps: any = (async (
+export const getServerSideProps = async (
     context: GetServerSidePropsContext,
 ) => {
     const session = await getServerSession(
@@ -24,27 +24,19 @@ export const getServerSideProps: any = (async (
     );
 
     if (!session) {
-        return {
-            props: { applications: [] },
-        };
+        return { props: { applications: [] } };
     }
 
     const user = await prisma.user.findUnique({
-        where: {
-            email: session.user.email as string,
-        },
+        where: { email: session.user.email as string },
     });
 
     if (!user) {
-        return {
-            props: { applications: [] },
-        };
+        return { props: { applications: [] } };
     }
 
     const apps = await prisma.application.findMany({
-        where: {
-            userId: user.id,
-        },
+        where: { userId: user.id },
     });
 
     return {
@@ -53,13 +45,17 @@ export const getServerSideProps: any = (async (
             user,
         },
     };
-}) satisfies InferGetServerSidePropsType<typeof getServerSideProps>;
+};
 
 export default function Applications({
     applications,
     user,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
     const [createAppOpen, setCreateAppOpen] = useState(false);
+    const [questions, setQuestions] = useState([{ question: "", answer: "" }]);
+    const [extracurriculars, setExtracurriculars] = useState([
+        { title: "", startDate: "", endDate: "", description: "" },
+    ]);
     const createAppRef = useRef<HTMLDivElement>(null);
 
     async function createApplication(
@@ -67,9 +63,7 @@ export default function Applications({
     ) {
         await fetch("/api/applications/create", {
             method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
+            headers: { "Content-Type": "application/json" },
             body: JSON.stringify(applicationData),
         });
     }
@@ -85,11 +79,43 @@ export default function Applications({
 
     useEffect(() => {
         document.addEventListener("mousedown", clickOutCreateApp);
-
         return () => {
             document.removeEventListener("mousedown", clickOutCreateApp);
         };
     }, []);
+
+    const handleQuestionChange = (
+        index: number,
+        field: string,
+        value: string,
+    ) => {
+        const newQuestions = [...questions];
+        newQuestions[index][field] = value;
+        setQuestions(newQuestions);
+    };
+
+    const handleExtracurricularChange = (
+        index: number,
+        field: string,
+        value: string,
+    ) => {
+        const newExtracurriculars = [...extracurriculars];
+        newExtracurriculars[index][field] = value;
+        setExtracurriculars(newExtracurriculars);
+    };
+
+    const addQuestion = () =>
+        setQuestions([...questions, { question: "", answer: "" }]);
+    const removeQuestion = (index: number) =>
+        setQuestions(questions.filter((_, i) => i !== index));
+
+    const addExtracurricular = () =>
+        setExtracurriculars([
+            ...extracurriculars,
+            { title: "", startDate: "", endDate: "", description: "" },
+        ]);
+    const removeExtracurricular = (index: number) =>
+        setExtracurriculars(extracurriculars.filter((_, i) => i !== index));
 
     return (
         <main className="flex w-full flex-col">
@@ -103,7 +129,7 @@ export default function Applications({
                         className="absolute bg-[#00000080] h-screen w-screen z-50 flex p-16 px-32"
                     >
                         <div
-                            className="relative m-auto h-auto w-full max-h-[700px] max-w-[1300px] bg-white p-3 rounded-xl"
+                            className="relative m-auto h-auto w-full min-h-[700px] max-w-[1300px] bg-white p-3 rounded-xl"
                             ref={createAppRef}
                         >
                             <div className="absolute top-0 right-0 m-6 cursor-pointer">
@@ -141,6 +167,25 @@ export default function Applications({
                                                 .toLowerCase()
                                                 .replace(/ /g, "-"),
                                             user: user,
+                                            questions: questions.map((q) => ({
+                                                question: q.question,
+                                                answer: q.answer,
+                                                limitType: LimitType.None,
+                                                completed: false,
+                                            })),
+                                            extracurriculars:
+                                                extracurriculars.map((e) => ({
+                                                    title: e.title,
+                                                    startDate: new Date(
+                                                        e.startDate,
+                                                    ),
+                                                    endDate: e.endDate
+                                                        ? new Date(e.endDate)
+                                                        : null,
+                                                    description: e.description,
+                                                    type: "Extracurricular",
+                                                    reference: "",
+                                                })),
                                         };
                                     await createApplication(applicationData);
                                     setCreateAppOpen(false);
@@ -190,6 +235,149 @@ export default function Applications({
                                         placeholder="Deadline"
                                         className="py-2 px-4 bg-gray-100 border rounded-lg focus:border-cyan-500"
                                     />
+                                </div>
+                                <div className="flex flex-col gap-4">
+                                    <h4 className="px-3">Questions</h4>
+                                    {questions.map((question, index) => (
+                                        <div key={index} className="flex gap-4">
+                                            <input
+                                                type="text"
+                                                name={`question_${index}`}
+                                                placeholder="Question"
+                                                value={question.question}
+                                                onChange={(e) =>
+                                                    handleQuestionChange(
+                                                        index,
+                                                        "question",
+                                                        e.target.value,
+                                                    )
+                                                }
+                                                className="py-2 px-4 bg-gray-100 border rounded-lg flex-1"
+                                            />
+                                            <input
+                                                type="text"
+                                                name={`answer_${index}`}
+                                                placeholder="Answer"
+                                                value={question.answer}
+                                                onChange={(e) =>
+                                                    handleQuestionChange(
+                                                        index,
+                                                        "answer",
+                                                        e.target.value,
+                                                    )
+                                                }
+                                                className="py-2 px-4 bg-gray-100 border rounded-lg flex-1"
+                                            />
+                                            <button
+                                                type="button"
+                                                onClick={() =>
+                                                    removeQuestion(index)
+                                                }
+                                                className="py-2 px-4 bg-red-500 text-white rounded-lg"
+                                            >
+                                                Remove
+                                            </button>
+                                        </div>
+                                    ))}
+                                    <button
+                                        type="button"
+                                        onClick={addQuestion}
+                                        className="py-2 px-4 bg-blue-500 text-white rounded-lg"
+                                    >
+                                        Add Question
+                                    </button>
+                                    <h4 className="px-3">Extracurriculars</h4>
+                                    {extracurriculars.map(
+                                        (extracurricular, index) => (
+                                            <div
+                                                key={index}
+                                                className="flex gap-4"
+                                            >
+                                                <input
+                                                    type="text"
+                                                    name={`extracurricular_title_${index}`}
+                                                    placeholder="Title"
+                                                    value={
+                                                        extracurricular.title
+                                                    }
+                                                    onChange={(e) =>
+                                                        handleExtracurricularChange(
+                                                            index,
+                                                            "title",
+                                                            e.target.value,
+                                                        )
+                                                    }
+                                                    className="py-2 px-4 bg-gray-100 border rounded-lg flex-1"
+                                                />
+                                                <input
+                                                    type="date"
+                                                    name={`extracurricular_startDate_${index}`}
+                                                    placeholder="Start Date"
+                                                    value={
+                                                        extracurricular.startDate
+                                                    }
+                                                    onChange={(e) =>
+                                                        handleExtracurricularChange(
+                                                            index,
+                                                            "startDate",
+                                                            e.target.value,
+                                                        )
+                                                    }
+                                                    className="py-2 px-4 bg-gray-100 border rounded-lg flex-1"
+                                                />
+                                                <input
+                                                    type="date"
+                                                    name={`extracurricular_endDate_${index}`}
+                                                    placeholder="End Date"
+                                                    value={
+                                                        extracurricular.endDate
+                                                    }
+                                                    onChange={(e) =>
+                                                        handleExtracurricularChange(
+                                                            index,
+                                                            "endDate",
+                                                            e.target.value,
+                                                        )
+                                                    }
+                                                    className="py-2 px-4 bg-gray-100 border rounded-lg flex-1"
+                                                />
+                                                <input
+                                                    type="text"
+                                                    name={`extracurricular_description_${index}`}
+                                                    placeholder="Description"
+                                                    value={
+                                                        extracurricular.description
+                                                    }
+                                                    onChange={(e) =>
+                                                        handleExtracurricularChange(
+                                                            index,
+                                                            "description",
+                                                            e.target.value,
+                                                        )
+                                                    }
+                                                    className="py-2 px-4 bg-gray-100 border rounded-lg flex-1"
+                                                />
+                                                <button
+                                                    type="button"
+                                                    onClick={() =>
+                                                        removeExtracurricular(
+                                                            index,
+                                                        )
+                                                    }
+                                                    className="py-2 px-4 bg-red-500 text-white rounded-lg"
+                                                >
+                                                    Remove
+                                                </button>
+                                            </div>
+                                        ),
+                                    )}
+                                    <button
+                                        type="button"
+                                        onClick={addExtracurricular}
+                                        className="py-2 px-4 bg-blue-500 text-white rounded-lg"
+                                    >
+                                        Add Extracurricular
+                                    </button>
                                 </div>
                                 <button
                                     type="submit"
