@@ -90,7 +90,10 @@ export default function Applications({
         value: string,
     ) => {
         const newQuestions = [...questions];
-        newQuestions[index][field] = value;
+        newQuestions[index] = {
+            ...newQuestions[index],
+            [field]: value,
+        };
         setQuestions(newQuestions);
     };
 
@@ -100,7 +103,10 @@ export default function Applications({
         value: string,
     ) => {
         const newExtracurriculars = [...extracurriculars];
-        newExtracurriculars[index][field] = value;
+        newExtracurriculars[index] = {
+            ...newExtracurriculars[index],
+            [field]: value,
+        };
         setExtracurriculars(newExtracurriculars);
     };
 
