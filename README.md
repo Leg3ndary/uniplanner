@@ -4,7 +4,7 @@ UniPlanner is an easy-to-use, organized, and elegant application planner for stu
 ## FAQ
 ### Is this service free?
 
-Yes! I believe that everything should be free and available to users. However, there are limits to the usage of these tiers, you can view full pricing information at our [pricing](https://uniplanner.netlify.app/pricing) page.
+Yes! I believe that all core features should be free and available to users. However, there are limits to the usage of these tiers, you can view full pricing information at our [pricing](https://uniplanner.netlify.app/pricing) page.
 
 ## Features
 
